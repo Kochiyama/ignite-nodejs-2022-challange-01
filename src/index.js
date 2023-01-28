@@ -16,8 +16,7 @@ function checksExistsUserAccount(request, response, next) {
 
   if (!existentUser) {
     return response.status(404).json({
-      error: true,
-      message: "No user registered with the provided username",
+      error: "No user registered with the provided username",
     });
   } else {
     request.body.user = existentUser;
@@ -32,8 +31,7 @@ app.post("/users", (request, response) => {
 
   if (existentUser)
     return response.status(400).json({
-      error: true,
-      message: "Username already taken",
+      error: "Username already taken",
     });
 
   const newUser = {
@@ -81,8 +79,7 @@ app.put("/todos/:id", checksExistsUserAccount, (request, response) => {
 
   if (!existentTodo) {
     return response.status(404).json({
-      error: true,
-      message: "No todo found with the given id",
+      error: "No todo found with the given id",
     });
   }
 
@@ -117,8 +114,7 @@ app.patch("/todos/:id/done", checksExistsUserAccount, (request, response) => {
 
   if (!existentTodo) {
     return response.status(404).json({
-      error: true,
-      message: "No todo found with the given id",
+      error: "No todo found with the given id",
     });
   }
 
@@ -152,8 +148,7 @@ app.delete("/todos/:id", checksExistsUserAccount, (request, response) => {
 
   if (!existentTodo) {
     return response.status(404).json({
-      error: true,
-      message: "No todo found with the given id",
+      error: "No todo found with the given id",
     });
   }
 
